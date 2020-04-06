@@ -8,6 +8,11 @@ String uText,dText;
 
 class MyApp extends StatefulWidget {
   @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -18,7 +23,7 @@ class MyApp extends StatefulWidget {
               TextField(onChanged: (text1){uText = text1;},),
               RaisedButton(onPressed: (){_uploadToServer(uText);}, child: Text("Set"),),
               Text(dText),
-              RaisedButton(onPressed: (){dText = getData();}, child: Text("Get"),),
+              RaisedButton(onPressed: (){dText = "getData()";}, child: Text("Get"),),
             ],
           ),
         ),
