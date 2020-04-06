@@ -16,15 +16,20 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              TextField(onChanged: (text1){uText = text1;},),
-              RaisedButton(onPressed: (){_uploadToServer(uText);}, child: Text("Set"),),
-              Text(dText),
-              RaisedButton(onPressed: (){dText = "getData()";}, child: Text("Get"),),
-            ],
+        body: SafeArea(
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  child: TextField(onChanged: (text1){uText = text1;},),
+                ),
+                RaisedButton(onPressed: (){_uploadToServer(uText);}, child: Text("Set"),),
+                Text(dText??"Text yet to come"),
+                RaisedButton(onPressed: (){dText = "getData()";}, child: Text("Get"),),
+              ],
+            ),
           ),
         ),
       ),
