@@ -9,15 +9,19 @@ String uText,dText;
 class MyApp extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          TextField(onChanged: (text1){uText = text1;},),
-          RaisedButton(onPressed: (){_uploadToServer(uText);}, child: Text("Set"),),
-          Text(dText),
-          RaisedButton(onPressed: (){dText = getData();}, child: Text("Get"),),
-        ],
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              TextField(onChanged: (text1){uText = text1;},),
+              RaisedButton(onPressed: (){_uploadToServer(uText);}, child: Text("Set"),),
+              Text(dText),
+              RaisedButton(onPressed: (){dText = getData();}, child: Text("Get"),),
+            ],
+          ),
+        ),
       ),
     );
   }
