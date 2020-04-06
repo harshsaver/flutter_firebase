@@ -53,8 +53,8 @@ class _MyAppState extends State<MyApp> {
 
     FirebaseDatabase.instance.reference().child("Users").push()
         .set({
-      'Name': name,
-      'Age': age
+      'Name': " ",
+      'Age': " "
     });
 
     getData();
