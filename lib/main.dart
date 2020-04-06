@@ -25,9 +25,13 @@ class _MyAppState extends State<MyApp> {
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: TextField(onChanged: (text1){uText = text1;},),
                 ),
-                RaisedButton(onPressed: (){_uploadToServer(uText);}, child: Text("Set"),),
+                RaisedButton(onPressed: (){
+
+                  _uploadToServer(uText);
+
+                  }, child: Text("Set"),),  //call function to upload to server
                 Text(dText??"Text yet to come"),
-                RaisedButton(onPressed: (){dText = "getData()";}, child: Text("Get"),),
+                RaisedButton(onPressed: (){getData();}, child: Text("Get"),),
               ],
             ),
           ),
@@ -45,17 +49,21 @@ class _MyAppState extends State<MyApp> {
 
 
 
-  void _uploadToServer(String u){
-    FirebaseDatabase.instance.reference().child('testNode')
+  void _uploadToServer(String u){ //function to upload to server
+
+    FirebaseDatabase.instance.reference().child("Users").push()
         .set({
-      'title': 'Test Title',
-      'content': u
+      'Name': name,
+      'Age': age
     });
+
+    getData();
   }
 
 Future<String> getData() async {
-  String result = (await FirebaseDatabase.instance.reference().child("test").once()).value;
+  String result = (await FirebaseDatabase.instance.reference().child("value").once()).value;
   print("I got " + result);
+  dText = result;
   return result;
 }
 
