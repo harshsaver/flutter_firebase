@@ -66,16 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
   void _uploadToServer(){
-    FirebaseDatabase.instance.reference().child('Users').push()
-        .set({
-      'data': data,
-    });
+
   }
-  Future<String> getEmail() async {
-    String result = (await FirebaseDatabase.instance.reference().child("test").once()).value;
-    print("Dem value is: "+result);
-    return result;
-  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
